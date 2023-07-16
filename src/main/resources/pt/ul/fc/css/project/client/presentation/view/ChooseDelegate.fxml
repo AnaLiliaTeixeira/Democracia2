@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="700.0" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ul.fc.css.project.client.presentation.control.ChooseDelegateController">
+   <children>
+      <Label layoutX="171.0" layoutY="181.0" text="Choose a delegate for each theme">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtCitizen" layoutX="210.0" layoutY="320.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="338.0" layoutY="317.0" prefHeight="36.0" prefWidth="164.0" promptText="Choose a Theme" />
+      <Button fx:id="btAssign" layoutX="261.0" layoutY="491.0" mnemonicParsing="false" onAction="#onBtAssign" prefHeight="56.0" prefWidth="178.0" text="Assign Delegate">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btBack" layoutX="56.0" layoutY="657.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="54.0" text=" Back" textOverrun="CENTER_WORD_ELLIPSIS" />
+   </children>
+</AnchorPane>

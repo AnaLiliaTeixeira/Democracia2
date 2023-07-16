@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .small-button {
+            width: 150px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head><body>
+    <section>
+        <h2>Law Project Votations:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Law Project</th>
+                    <th>Close Date</th>
+                    <th>Theme </th>
+                    <th>Delegate Vote</th>
+                    <th> Your vote </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${lawprojectvotations.empty}">
+                    <td colspan="3">No Law Projects</td>
+                </tr>
+                <tr th:each="v : ${lawprojectvotations}">
+                    <td>
+                        <a th:href="@{/lawproject_details/{id}(id=${v.id})}" th:text="${v.title}">...</a>
+                    </td>
+                    <td th:text="${v.close_date}">...</td>
+                    <td th:text="${v.theme_name}">...</td>
+                    <td th:text="${v.delegate_vote}">...</td>
+
+                    <td>
+                        <select name="vote">
+                            <option value="FAVOR">FAVOR</option>
+                            <option value="AGAINST">AGAINST</option>
+                        </select>
+                        <button class="small-button" th:onclick="|castVote(${v.id}, this.parentNode.querySelector('select').selectedOptions[0].value)|">Vote</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <script>
+         function castVote(projetId, selectedOption) {
+            fetch('api/vote/' + projetId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: selectedOption,
+            }).then(response => {
+                if(response.ok) {
+                    alert('Vote casted successfully!');
+                }else if (response.status === 403) {
+                    response.text().then(message => {
+                        alert(message);
+                    });
+                } else {
+                    alert('Something went wrong. Try again later.');
+                }
+            }).catch(error => {
+                alert('Error: ' + error);
+            });
+        }
+    </script>
+
+</body>
+</html>

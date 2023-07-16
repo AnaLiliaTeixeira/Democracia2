@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2>Create Delegate:</h2>
+
+        <div class="error" th:text="${error}"></div>
+
+        <form action="#" th:action="@{/delegates/new}" th:object="${delegate}" method="post">
+            <label for="name">Name:</label><input name="name" th:field="*{name}" /><br />
+            <input type="submit" value="Add" />
+        </form>
+    </section>
+</body>
+
+</html>

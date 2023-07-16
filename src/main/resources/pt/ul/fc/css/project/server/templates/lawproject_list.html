@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2>Law Projects:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Pdf_attachment</th>
+                    <th>Close date</th>
+                    <th>Delegate</th>
+                    <th>Theme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${lawprojects.empty}">
+                    <td colspan="3">No Law Projects</td>
+                </tr>
+                <tr th:each="lp : ${lawprojects}">
+                    <td th:text="${lp.id}">...</td>
+                    <td><a th:href="@{/lawprojects/} + ${lp.id}" th:text="${lp.title}">...</a></td>
+                    <td th:text="${lp.description}">...</td>
+                    <td th:text="${lp.pdf_attachment}">...</td>
+                    <td th:text="${lp.close_date}">...</td>
+                    <td th:text="${lp.delegate_id}">...</td>
+                    <td th:text="${lp.theme_id}">...</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="location.href='/lawprojects/new'">Add new Law Project</button>
+    </section>
+</body>
+
+</html>

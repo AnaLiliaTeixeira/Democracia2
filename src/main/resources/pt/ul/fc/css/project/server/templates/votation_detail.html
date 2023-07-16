@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2>Law Project Votations:</h2>
+
+        <table>
+			<tr>
+                <th>Law Project id:</th>
+                <td th:text="${lawprojectvotation.lawproject.getid}"></td>
+            </tr>
+            <tr>
+                <th>Close date:</th>
+                <td th:text="${lawprojectvotation.close_date_votation}"></td>
+            </tr>
+
+        </table>
+    </section>
+</body>
+
+</html>

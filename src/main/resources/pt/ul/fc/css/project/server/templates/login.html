@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html th:fragment="login (content)" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!--/* Standard layout can be mixed with Layout Dialect */-->
+        <div login:fragment="header">
+            <h1>Democracy Manager 1.0</h1>
+            <h2>LOGIN</h2>
+
+            <ol>
+				<p>Enter delegate id</p>
+				<input name="delegate_id" th:field="*{delegate_id}" /><br />
+        		<button onclick="location.href='/layout'">Login</button>
+        		<li><a th:href="location.href='/layout'">LOGIN</a></li>
+
+            </ol>
+        </div>
+
+        <div th:replace="${content}">
+            <!-- ============================================================================ -->
+            <!-- This content is only used for static prototyping purposes (natural templates)-->
+            <!-- and is therefore entirely optional, as this markup fragment will be included -->
+            <!-- from "fragments/header.html" at runtime.                                     -->
+            <!-- ============================================================================ -->
+            <h2>Static content for prototyping purposes only</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+                Phasellus et placerat elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Praesent scelerisque neque neque, ac elementum quam dignissim interdum.
+                Phasellus et placerat elit.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

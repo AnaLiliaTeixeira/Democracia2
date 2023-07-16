@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html th:fragment="layout (content)" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!--/* Standard layout can be mixed with Layout Dialect */-->
+        <div layout:fragment="header">
+            <h1>Democracy Manager 1.0</h1>
+
+            <ol>
+                <li><a th:href="@{/lawproject_list}">List Law Projects</a></li>
+                <li><a th:href="@{/votation_list}">List Law Project Votations</a></li>
+                <li><a th:href="@{/choose_delegate}">Choose Delegate</a></li>
+            </ol>
+        </div>
+    </div>
+</body>
+
+</html>

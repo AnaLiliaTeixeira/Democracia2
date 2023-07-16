@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .submit {
+            width: 100px;
+            padding: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Add new Project:</h2>
+
+        <div class="error" th:text="${error}"></div>
+
+        <form action="#" th:action="@{/lawprojects/new}" th:object="${lawproject}" method="post">
+            <label for="title">Title:</label><input name="title" th:field="*{title}" /><br />
+            <label for="description">Description:</label><input name="description" th:field="*{description}" /><br />
+            <label for="pdf_attachment">Pdf_attachment:</label><input name="pdf_attachment" th:field="*{pdf_attachment}" /><br />
+            <input type="datetime-local" name="close_date" th:value="${formattedDateTime}" /><br />
+
+            <div th:if="${isDelegate}">
+                <label for="theme_id">Theme:</label>
+                <select id="theme_id" name="theme_id" th:field="*{theme_id}">
+                    <option th:each="theme : ${themes}" th:value="${theme.id}" th:text="${theme.name}"></option>
+                </select>
+                <div class="submit">
+                    <input type="submit" value="Add" />
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="700.0" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pt.ul.fc.css.project.client.presentation.control.LawProjectsController">
+   <children>
+      <Label layoutX="36.0" layoutY="55.0" text="Non Expired Law Projects">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView" layoutX="32.0" layoutY="115.0" prefHeight="464.0" prefWidth="651.0">
+        <columns>
+          <TableColumn fx:id="colTitle" prefWidth="85.0" text="TITLE" />
+          <TableColumn fx:id="colDescription" prefWidth="109.0" text="DESCRIPTION" />
+          <TableColumn fx:id="colPdf_attachment" prefWidth="132.0" text="PDF_ATTACHMENT" />
+          <TableColumn fx:id="colCloseDate" prefWidth="112.0" text="CLOSE DATE" />
+          <TableColumn fx:id="colDelegateName" prefWidth="114.0" text="DELEGATE" />
+          <TableColumn fx:id="colThemeName" prefWidth="100.0" text="THEME" />
+        </columns>
+      </TableView>
+      <Button fx:id="btBack" layoutX="36.0" layoutY="637.0" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="54.0" text=" Back" textOverrun="CENTER_WORD_ELLIPSIS" />
+      <Button fx:id="btAdd" layoutX="303.0" layoutY="612.0" mnemonicParsing="false" onAction="#onBtAddAction" prefHeight="40.0" prefWidth="130.0" text="Add Law Project" />
+   </children>
+</AnchorPane>

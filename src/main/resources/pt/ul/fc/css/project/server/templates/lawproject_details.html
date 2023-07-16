@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2>LawProject:</h2>
+
+        <table>
+            <tr>
+                <th>Title:</th>
+                <td th:text="${lawproject.title}"></td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td th:text="${lawproject.description}"></td>
+            </tr>
+            <tr>
+                <th>Pdf_attachment:</th>
+                <td th:text="${lawproject.pdf_attachment}"></td>
+            </tr>
+            <tr>
+                <th>Close Date:</th>
+                <td th:text="${lawproject.close_date}"></td>
+            </tr>
+            <tr>
+                <th>Delegate:</th>
+                <td th:text="${lawproject.delegate_id}"></td>
+            </tr>
+            <tr>
+                <th>Theme:</th>
+                <td th:text="${lawproject.theme_id}"></td>
+            </tr>
+            <tr>
+                <th>Votation:</th>
+                <td><a th:href="@{/lawprojects/} + ${lp.votation}" th:text="${lawproject.votation}"></a></td>
+            </tr>
+
+        </table>
+
+    </section>
+</body>
+
+</html>

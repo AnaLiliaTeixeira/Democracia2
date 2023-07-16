@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .small-button {
+            width: 250px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+    <h1>Democracy Manager 1.0</h1>
+    <h2>LOGIN</h2>
+
+    <form th:action="@{/citizen_add}" method="post">
+        <p>Enter Citizen ID</p>
+        <input name="id" /><br />
+
+        <p>Enter Name</p>
+        <input name="name" /><br />
+
+        <p>Are You a Delegate?</p>
+        <input type="checkbox" name="isDelegate" value="true" />
+
+        <button class="small-button" type="submit">Login</button>
+    </form>
+</div>
+</body>
+
+
+</html>

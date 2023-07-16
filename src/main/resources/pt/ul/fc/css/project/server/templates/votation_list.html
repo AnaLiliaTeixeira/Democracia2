@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2>Law Project Votations:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Law Project</th>
+                    <th>Close Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${customers.empty}">
+                    <td colspan="3">No Law Project Votations</td>
+                </tr>
+                <tr th:each="v : ${lawprojectvotations}">
+                    <td <a th:href="@{/lawprojects/} + ${v.lawproject.id}"th:text="${v.lawproject.id}"></a>...</td>
+                    <td th:text="${v.close_date}">...</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .small-button {
+            width: 250px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Law Projects:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Pdf_attachment</th>
+                    <th>Close date</th>
+                    <th>Delegate</th>
+                    <th>Theme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${lawprojects.empty}">
+                    <td colspan="3">No Law Projects</td>
+                </tr>
+                <tr th:each="lp : ${lawprojects}">
+                    <td>
+                        <a th:href="@{/lawproject_details/{id}(id=${lp.id})}" th:text="${lp.title}">...</a>
+                    </td>
+                    <td th:text="${lp.description}"></td>
+                    <td th:text="${lp.pdf_attachment}">...</td>
+                    <td th:text="${lp.close_date}">...</td>
+                    <td th:text="${lp.delegate_name}">...</td>
+                    <td th:text="${lp.theme_name}">...</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="small-button" id="addLawProjectButton">Add new Law Project</button>
+    </section>
+
+    <script>
+        document.getElementById('addLawProjectButton').addEventListener('click', function(event) {
+            event.preventDefault();
+                fetch('/api/check_delegate_status')
+                .then(response => response.json())
+                .then(data => {
+            if (data.isDelegate) {
+                window.location.href = '/lawproject_add'; // Redirect to the add law project page
+            } else {
+                alert('You are not a delegate. Only delegates can add Law Projects.'); // Show an alert
+            }
+          });
+        });
+    </script>
+</body>
+</html>

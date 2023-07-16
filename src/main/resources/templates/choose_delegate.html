@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Democracy Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        #container {
+            margin: auto;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        select,
+        input[type="submit"] {
+            width: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2>Choose Delegate for Theme:</h2>
+        <form>
+            <table>
+                <tbody>
+                    <tr th:each="delegate : ${delegates}">
+                        <td th:text="${delegate.name}"></td>
+                        <td>
+                            <select class="theme-select">
+                                <option value="">Select a Theme</option>
+                                <option th:each="theme : ${themes}" th:value="${delegate.id + '-' + theme.id}" th:text="${theme.name}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><br>
+            <input type="submit" value="Assign Delegate" onclick="assignDelegate()">
+        </form>
+    </div>
+
+    <script>
+       function assignDelegate() {
+        event.preventDefault(); // Evita o comportamento padrão de enviar o formulário
+
+        const selects = document.querySelectorAll('.theme-select');
+        const formdata = new FormData();
+
+        selects.forEach(select => {
+            const delegateId = select.value.split('-')[0];
+            const themeId = select.value.split('-')[1];
+
+            if (delegateId && themeId) {
+            formdata.append('delegateIds', delegateId);
+            formdata.append('themeIds', themeId);
+            }
+        });
+
+        fetch('/api/assign_delegate', {
+            method: 'POST',
+            body: formdata
+        })
+            .then(response => {
+            if (response.ok) {
+                alert('Delegates assigned successfully');
+            } else {
+                alert('Failed to assign delegates');
+            }
+            })
+            .catch(error => {
+                alert('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

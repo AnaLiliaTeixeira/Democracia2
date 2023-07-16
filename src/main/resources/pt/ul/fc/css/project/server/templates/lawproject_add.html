@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::section})}">
+
+<body>
+    <section>
+        <h2>Add new Project:</h2>
+
+        <div class="error" th:text="${error}"></div>
+
+        <form action="#" th:action="@{/lawprojects/new}" th:object="${lawproject}" method="post">
+            <label for="title">Title:</label><input name="title" th:field="*{title}" /><br />
+            <label for="description">Description:</label><input name="description" th:field="*{description}" /><br />
+            <label for="pdf_attachment">Pdf_attachment:</label><input name="pdf_attachment" th:field="*{pdf_attachment}" /><br />
+            <label for="close_date">Close date:</label><input name="close_date" th:field="*{close_date}" /><br />
+            <label for="delegate">Delegate:</label><input name="delegate" th:field="*{delegate}" /><br />
+            <label for="theme">Theme:</label><input name="theme" th:field="*{theme}" /><br />
+
+            <input type="submit" value="Add" />
+        </form>
+    </section>
+</body>
+
+</html>
