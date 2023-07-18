@@ -1,13 +1,25 @@
-# Projecto de Referência de SpringBoot
+# Projeto SpringBoot
 
-Trabalho realizado por <br>
-Ana Teixeira fc56336 <br>
-Ana Catarina Luís fc53563 <br>
-Vasco Barros fc54986
+Trabalho realizado em grupo de 3 elementos no âmbito da cadeira de Construção de Sistemas de Software da Licenciatura em Engenharia Informática.<br>
 
-## O que fazer
+O projeto foi realizado utilizando o sistema de controlo de versões GitLab.
 
-Este projecto serve para verificar que todas as dependências necessárias ao projecto estão a funcionar.
+## Como correr o projeto
+
+### Correr o servidor
+No terminal correr o seguinte comando no diretório do projeto:
+```
+./server.sh
+```
+
+### Correr o cliente
+No terminal correr o seguinte comando no diretório do projeto:
+```
+./client.sh
+```
+
+Verifique se a Base de Dados está iniciada corretamente e se todas as dependências para o projeto estão instaladas no seu computador.
+
 
 ## Dependências
 
@@ -46,13 +58,6 @@ Este comando vai iniciar dois containers:
 
 * Um com a aplicação que existe nesta pasta.
 * Uma instância de um container com Postgres
-
-## Terceiro passo
-
-Abrir http://localhost:8080 num browser e verificar que aparece a string "Olá Mundo".
-
-Pode ainda confirmar que consegue ver um objecto JSON em http://localhost:8080/api/author/1
-
 
 # FAQ
 
